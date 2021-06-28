@@ -1,0 +1,23 @@
+<div class="details-card d-flex flex-column">
+  <app-MaidCard [data]="data" [revers]="true"></app-MaidCard>
+
+  <div class="details-container">
+    <h5>المهارات والاعمال المنزليه</h5>
+    <div class="d-flex flex-wrap">
+      <div class="person-detalis d-flex align-items-center" *ngFor="let item of data.skills">
+        <span class="fas fa-info-circle"></span>
+        <span>{{item}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="details-container" *ngIf="data.notes.length != 0">
+    <h5>ملاحظات</h5>
+    <div class="d-flex flex-wrap">
+      <div class="person-detalis d-flex align-items-center" *ngFor="let item of data.notes">
+        <span class="fas fa-info-circle"></span>
+        <span>{{item}}</span>
+      </div>
+    </div>
+  </div>
+</div>

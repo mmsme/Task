@@ -1,0 +1,63 @@
+.navbar {
+  direction: rtl;
+}
+
+.navbar-brand {
+  height: 60px;
+}
+
+.navbar-nav {
+  direction: ltr;
+}
+
+.nav-item .nav-link {
+  color: #333;
+  font-size: large;
+  font-weight: 800;
+  font-family: "Tajawal", sans-serif;
+}
+
+.nav-item .nav-link:hover {
+  color: rgba(51, 51, 51, 0.596);
+}
+
+@media only screen and (max-width: 575px) {
+  .nav-item {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1ex;
+    visibility: visible;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.082);
+  }
+}
+
+@media only screen and (max-width: 996px) {
+  .nav-item .nav-link {
+    font-size: 1rem;
+  }
+
+  .navbar > .container {
+    width: 100%;
+  }
+}
+
+.user-icon {
+  height: 30px;
+  margin: 0 1ex;
+}
+
+.banner {
+  height: 13em;
+  background-image: url("../../../assets/images/cover.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.navbar {
+  background-color: white;
+}
+
+.navbar-brand {
+  cursor: pointer;
+}

@@ -1,0 +1,62 @@
+<div id="choose-form">
+  <div class="d-flex justify-content-center">
+    <h4>إختيار عامله نظافه</h4>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-3">
+      <div class="filter">
+        <p class="filter-title">فلترة النتائج</p>
+        <label class="filter-label">العمر</label>
+        <div class="custom-slider mb-3">
+          <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+        </div>
+        <div class="form-group">
+          <label for="nat" class="filter-label">الجنسيه</label>
+          <select class="form-control mySelector" name="nat" id="nat">
+            <option *ngFor="let item of nations" [value]="item">{{item}}</option>
+          </select>
+        </div>
+        <div class="d-flex justify-content-between">
+          <button type="button" id="quatos-btn" class="btn rounded-pill">عرض الباقات</button>
+          <button type="button" id="clear-btn" class="btn" data-toggle="tooltip" title="مسح">
+            <i class="fas fa-eraser"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-9">
+      <div class="search-result">
+        <p>عدد نتائج البحث <span>{{list.length}}</span> خادمه منزليه</p>
+      </div>
+      <div class="list mt-3 d-flex flex-column">
+        <app-MaidCard *ngFor="let item of list" [data]="item" [selected]="selectedMaid?.id == item.id? true:false"
+          (clicked)="onMaidSelected($event, modalToggler)">
+        </app-MaidCard>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" hidden #modalToggler class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+  Launch
+</button>
+
+<!-- Modal -->
+<div *ngIf="selectedMaid" class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="header">
+        <span class="h5">تفاصيل عامله</span>
+      </div>
+      <div class="modal-body">
+        <app-MaidDetails [data]="selectedMaid"></app-MaidDetails>
+      </div>
+      <div class="modal-footer d-flex justify-content-center justify-content-md-end">
+        <button type="button" class="btn btn-secondary rounded-pill" data-dismiss="modal"
+          (click)="selectedMaid = null">إغلاق</button>
+        <button type="button" class="btn rounded-pill">تعاقد الأن</button>
+      </div>
+    </div>
+  </div>
+</div>

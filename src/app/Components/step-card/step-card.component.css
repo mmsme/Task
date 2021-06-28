@@ -1,0 +1,44 @@
+.card {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.prev {
+  background-color: #49a53c;
+  color: #f5f5f5;
+}
+
+.now {
+  background-color: #0077c0;
+  color: #f5f5f5;
+}
+
+.next {
+  background-color: #d5eaff;
+  color: #333;
+}
+
+.card-body {
+  padding: 1ex 2ex !important;
+}
+
+.icon {
+  font-size: 2rem;
+  padding: 0 1.8ex;
+}
+
+.icon-not-active {
+  font-size: 2rem;
+  color: #0081c8;
+  padding: 0 1.8ex;
+}
+
+.step-title,
+.step-content {
+  text-align: start;
+  font-family: "Tajawal", sans-serif;
+}
+
+.step-title {
+  font-weight: 600;
+}

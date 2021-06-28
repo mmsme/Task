@@ -1,0 +1,22 @@
+.stepper-header {
+  margin: 3em 0;
+}
+
+.stepper-btn {
+  padding: 1ex 5ex;
+  background-color: transparent;
+  border: 2px solid #0082c8c5;
+  color: #0082c8c5;
+  font-family: "Tajawal", sans-serif;
+  font-weight: 800;
+}
+
+.stepper-btn:focus {
+  color: white;
+  background-color: #0081c8;
+  box-shadow: none;
+}
+
+.stepper-body {
+  margin: 1em 0;
+}

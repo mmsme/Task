@@ -1,0 +1,35 @@
+<div class="container">
+  <!-- ------------------------------- header -------------------------------- -->
+  <div class="stepper-header d-none d-md-flex justify-content-between">
+    <ng-container *ngFor="let item of steps; let i=index">
+      <app-step-card *ngIf="i == currentStep" [status]="'now'" [icon]="item.icon" [title]="item.title"
+        [content]="item.content">
+      </app-step-card>
+      <app-step-card *ngIf="i>currentStep" [status]="'next'" [icon]="item.icon" [title]="item.title"
+        [content]="item.content">
+      </app-step-card>
+      <app-step-card *ngIf="i<currentStep" [status]="'prev'" [icon]="item.icon" [title]="item.title"
+        [content]="item.content">
+      </app-step-card>
+    </ng-container>
+  </div>
+  <div class="stepper-header d-block d-sm-none">
+    <app-step-card [status]="'now'" [icon]="steps[currentStep].icon" [title]="steps[currentStep].title"
+      [content]="steps[currentStep].content">
+    </app-step-card>
+  </div>
+
+  <!-- -------------------------------- body --------------------------------- -->
+  <div class="stepper-body">
+    <app-ChooseMaid></app-ChooseMaid>
+  </div>
+
+
+  <!-- ----------------------------- controller ------------------------------ -->
+  <div class="d-flex justify-content-between">
+    <button name="" id="" class="stepper-btn rounded-pill prev btn" (click)="prev()"
+      [disabled]="currentStep == 0">السابق</button>
+    <button name="" id="" class="stepper-btn rounded-pill next btn" (click)="next()"
+      [disabled]="currentStep == steps.length-1">التالي</button>
+  </div>
+</div>

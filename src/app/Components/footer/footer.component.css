@@ -1,0 +1,9 @@
+.footer {
+  height: 4em;
+  background: linear-gradient(90deg, #1b3795, #0091d7);
+}
+
+.footer span {
+  color: white;
+  font-size: large;
+}

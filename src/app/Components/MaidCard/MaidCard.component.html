@@ -1,0 +1,23 @@
+<div class="card" [class.reversed]="reversed" [class.border-0]="reversed" [class.card-clicked]="selected"
+  (click)="onClick()">
+  <div class=" card-body">
+    <div class="row">
+      <div class="col-12 col-md-2 d-flex justify-content-center align-items-center">
+        <img src="assets/images/woman.png" class="person-img rounded-circle p-2" alt="شركه راحه الاسره للأستقدام">
+      </div>
+      <div class="col-12 col-md-10 d-flex flex-column">
+        <div class="d-flex justify-content-md-start justify-content-center">
+          <h4 class="person-title mt-3 m-md-0" [class.person-title-clicked]="selected">
+            {{data.name}}
+          </h4>
+        </div>
+        <div class="d-flex flex-wrap">
+          <div class="person-detalis  d-flex align-items-center" *ngFor="let item of formatedData">
+            <span class="fas fa-info-circle"></span>
+            <span>{{item}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

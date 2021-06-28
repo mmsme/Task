@@ -1,0 +1,15 @@
+<div class="card d-flex align-items-center text-left border-0" [class.prev]="_state == 'prev'"
+  [class.now]="_state == 'now'" [class.next]="_state == 'next'">
+  <div class="card-body">
+    <div class="row">
+      <div class="icon col-3 d-flex justify-content-center align-items-center"
+        [class.icon-not-active]="_state == 'next'">
+        <i [class]="icon"></i>
+      </div>
+      <div class="d-flex  flex-column justify-content-center">
+        <span class="step-title">{{title}}</span>
+        <span class="step-content">{{content}}</span>
+      </div>
+    </div>
+  </div>
+</div>

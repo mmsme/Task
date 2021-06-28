@@ -1,0 +1,103 @@
+#choose-form {
+  font-family: "Tajawal", sans-serif;
+}
+
+.list {
+  gap: 12px;
+}
+
+h4 {
+  font-weight: 700;
+  margin-bottom: 1.5ex;
+}
+
+.search-result {
+  background-color: rgba(221, 221, 221, 0.63);
+  padding: 1ex 2ex;
+  border-radius: 8px;
+  text-align: start;
+  font-weight: 600;
+}
+
+.search-result p {
+  margin: 0;
+}
+
+.search-result span {
+  color: #f4b537;
+  font-weight: 700;
+  margin: 0 2px;
+}
+
+.filter {
+  background-color: rgba(221, 221, 221, 0.63);
+  border-radius: 10px;
+  text-align: start;
+  padding: 1em;
+  margin-bottom: 1ex;
+}
+
+.filter-title {
+  font-size: larger;
+  font-weight: 800;
+  margin: 0 0 1ex 0;
+}
+
+.filter-label {
+  font-size: medium;
+  font-weight: 800;
+}
+
+.mySelector {
+  border-radius: 10px;
+}
+
+#quatos-btn {
+  background-color: #0081c8;
+  color: white;
+  font-size: large;
+  font-weight: 500;
+  width: 9.5em;
+}
+
+#clear-btn {
+  color: white;
+  background-color: #f4b537;
+  border-radius: 5em;
+}
+
+.header {
+  background-color: #0081c8;
+  color: white;
+  text-align: start;
+  padding: 1em;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.modal-content {
+  font-family: "Tajawal", sans-serif;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  border-radius: 10px !important;
+  -webkit-border: 0px !important;
+  -moz-border: 0px !important;
+  border: 0px !important;
+}
+
+.modal-body app-MaidCard {
+  border: 0 !important;
+}
+
+.modal-footer {
+  border: 0;
+}
+
+.modal-footer :last-child {
+  background-color: #0081c8;
+  color: white;
+}
+
+.modal-footer .btn {
+  padding: 1ex 5ex;
+}
