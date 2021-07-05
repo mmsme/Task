@@ -13,6 +13,7 @@ import { OurServicesComponent } from './Pages/our-services/our-services.componen
 import { MaidServicesService } from './Services/maidServices.service';
 import { MaidDetailsComponent } from './Components/MaidDetails/MaidDetails.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { FooterComponent } from './Components/footer/footer.component';
     MaidDetailsComponent,
     FooterComponent,
   ],
-  imports: [BrowserModule, NgxSliderModule],
+  imports: [BrowserModule, NgxSliderModule, NgxPaginationModule],
   providers: [MaidServicesService],
   bootstrap: [AppComponent],
 })

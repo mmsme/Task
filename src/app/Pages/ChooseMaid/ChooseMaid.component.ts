@@ -3,6 +3,7 @@ import { Options } from '@angular-slider/ngx-slider';
 
 import { Maid } from 'src/app/Models/Maid';
 import { MaidServicesService } from 'src/app/Services/maidServices.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-ChooseMaid',
@@ -11,16 +12,20 @@ import { MaidServicesService } from 'src/app/Services/maidServices.service';
 })
 export class ChooseMaidComponent implements OnInit {
   list: Maid[] = [];
+  filteredList: Maid[] = [];
   nations: string[] = [];
   minValue!: number;
   maxValue!: number;
-  selectedMaid!: any;
+  selectedMaid: any = null;
   options: Options = {};
+  filterOptions: any = {nat: null, maxAge: null, minAge: null}
+  p: any;
 
-  constructor(private maidServices: MaidServicesService) {}
+  constructor(private maidServices: MaidServicesService) {
+  }
 
   ngOnInit() {
-    this.list = this.maidServices.getAllMaid();
+    this.filteredList = this.list = this.maidServices.getAllMaid();
     this.getAllNations();
     this.getMaxAge();
     this.getMinAge();
@@ -64,5 +69,54 @@ export class ChooseMaidComponent implements OnInit {
     });
 
     btn.click();
+  }
+
+  onNatSelected(event: any){
+    this.filterOptions.nat = event.value
+  }
+
+  onSliderValueChanged(event: any){
+    this.filterOptions.minAge = event.value;
+    this.filterOptions.maxAge = event.highValue;
+  }
+
+  filter(){
+    let res:any[] = [];
+    
+    if (this.filterOptions.nat && this.filterOptions.maxAge && this.filterOptions.minAge) {
+      res = this.filterByAllOptions();
+    }else if (this.filterOptions.nat) {
+      res = this.filterByNat();
+    }else if(this.filterOptions.maxAge){
+      res = this.filterByAge();
+    }
+
+    console.log(res);
+    this.filteredList = [...new Set(res)]
+  }
+
+  filterByAge(){
+    return this.list.filter((e)=>{
+      return e.age >= this.filterOptions.minAge && e.age <= this.filterOptions.maxAge;
+    })
+  }
+
+  filterByNat(){
+    return this.list.filter((e)=>{
+      return e.nat == this.filterOptions.nat;
+    })
+  }
+
+  filterByAllOptions(){
+    return this.list.filter((e)=> {
+      return e.nat == this.filterOptions.nat && ( e.age <= this.filterOptions.maxAge && e.age >= this.filterOptions.minAge) 
+    });
+  }
+
+  clearFilter(){
+    this.filterOptions = {nat: null, maxAge: null, minAge: null};
+    this.filteredList = [...this.list];
+    this.maxValue = this.options.ceil || 0;
+    this.minValue = this.options.floor || 0;
   }
 }

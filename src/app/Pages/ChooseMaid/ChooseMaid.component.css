@@ -101,3 +101,8 @@ h4 {
 .modal-footer .btn {
   padding: 1ex 5ex;
 }
+
+.empty{
+  height: 40vh;
+}
+

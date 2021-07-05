@@ -23,8 +23,6 @@ export class MaidCardComponent implements OnInit {
       this.data.skills[0],
       this.data.skills[1],
     ];
-
-    console.log(this.formatedData);
   }
 
   onClick() {

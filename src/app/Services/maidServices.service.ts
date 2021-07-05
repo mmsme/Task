@@ -113,6 +113,8 @@ export class MaidServicesService {
   constructor() {}
 
   getAllMaid() {
+    console.log(this.maids);
+    
     return [...this.maids];
   }
 }

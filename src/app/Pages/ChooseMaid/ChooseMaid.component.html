@@ -8,29 +8,35 @@
         <p class="filter-title">فلترة النتائج</p>
         <label class="filter-label">العمر</label>
         <div class="custom-slider mb-3">
-          <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+          <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (userChangeEnd)="onSliderValueChanged($event)"></ngx-slider>
         </div>
         <div class="form-group">
           <label for="nat" class="filter-label">الجنسيه</label>
-          <select class="form-control mySelector" name="nat" id="nat">
-            <option *ngFor="let item of nations" [value]="item">{{item}}</option>
+          <select class="form-control mySelector" name="nat" id="nat" (change)="onNatSelected($event.target)">
+            <option  *ngFor="let item of nations" [value]="item">{{item}}</option>
           </select>
         </div>
         <div class="d-flex justify-content-between">
-          <button type="button" id="quatos-btn" class="btn rounded-pill">عرض الباقات</button>
-          <button type="button" id="clear-btn" class="btn" data-toggle="tooltip" title="مسح">
+          <button type="button" id="quatos-btn" class="btn rounded-pill" (click)="filter()">عرض الباقات</button>
+          <button type="button" id="clear-btn" class="btn" data-toggle="tooltip" title="مسح" (click)="clearFilter()">
             <i class="fas fa-eraser"></i></button>
         </div>
       </div>
     </div>
     <div class="col-12 col-md-9">
       <div class="search-result">
-        <p>عدد نتائج البحث <span>{{list.length}}</span> خادمه منزليه</p>
+        <p>عدد نتائج البحث <span>{{filteredList.length}}</span> خادمه منزليه</p>
       </div>
-      <div class="list mt-3 d-flex flex-column">
-        <app-MaidCard *ngFor="let item of list" [data]="item" [selected]="selectedMaid?.id == item.id? true:false"
+      <div class="list mt-3 d-flex flex-column" *ngIf="filteredList.length != 0" >
+        <app-MaidCard *ngFor="let item of filteredList  | paginate: { itemsPerPage: 3, currentPage: p }" [data]="item" [selected]="selectedMaid?.id == item.id? true:false"
           (clicked)="onMaidSelected($event, modalToggler)">
         </app-MaidCard>
+
+        <pagination-controls class="text-center mt-2" (pageChange)="p = $event" (pageBoundsCorrection)="p = $event">
+        </pagination-controls>
+      </div>
+      <div *ngIf="filteredList.length == 0" class="empty d-flex justify-content-center align-items-center">
+        <h5>عفوا, لا يوجد بيانات مطابقه لبحثك</h5>
       </div>
     </div>
   </div>
@@ -42,7 +48,7 @@
 </button>
 
 <!-- Modal -->
-<div *ngIf="selectedMaid" class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+<div  class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -50,7 +56,7 @@
         <span class="h5">تفاصيل عامله</span>
       </div>
       <div class="modal-body">
-        <app-MaidDetails [data]="selectedMaid"></app-MaidDetails>
+        <app-MaidDetails *ngIf="selectedMaid" [data]="selectedMaid"></app-MaidDetails>
       </div>
       <div class="modal-footer d-flex justify-content-center justify-content-md-end">
         <button type="button" class="btn btn-secondary rounded-pill" data-dismiss="modal"

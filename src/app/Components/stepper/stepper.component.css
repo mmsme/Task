@@ -1,5 +1,6 @@
 .stepper-header {
   margin: 3em 0;
+  gap: 5px;
 }
 
 .stepper-btn {
